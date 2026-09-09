@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmoud & Shaimaa | دعوة زفاف</title>
+    <meta name="description" content="دعوة زفاف محمود وشيماء - Wedding Invitation">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ==================== ENVELOPE COVER ==================== -->
+    <div id="envelope" class="envelope">
+        <div class="envelope-inner">
+            <div class="seal">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="goldGrad" cx="50%" cy="40%" r="70%">
+                            <stop offset="0%" stop-color="#fde29a"/>
+                            <stop offset="40%" stop-color="#c9a44c"/>
+                            <stop offset="80%" stop-color="#8a6a1f"/>
+                            <stop offset="100%" stop-color="#5d4413"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="92" fill="url(#goldGrad)" stroke="#8a6a1f" stroke-width="2"/>
+                    <circle cx="100" cy="100" r="86" fill="none" stroke="#5d4413" stroke-width="0.5" stroke-dasharray="2,2"/>
+                    <path d="M100 40 C 80 70, 60 90, 70 130 C 80 160, 110 165, 100 165 C 90 165, 120 160, 130 130 C 140 90, 120 70, 100 40 Z" fill="#8a6a1f" opacity="0.85"/>
+                    <path d="M100 50 C 90 75, 85 100, 95 140 L 95 165 M 100 60 L 100 165 M 100 80 C 105 100, 115 130, 110 150 M 70 130 C 75 145, 85 155, 95 160 M 130 130 C 125 145, 115 155, 105 160" stroke="#fde29a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <p class="couple-preview">محمود &amp; شيماء</p>
+            <p class="tap-text">اضغط على الختم للفتح</p>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN INVITATION ==================== -->
+    <main id="invitation" class="invitation hidden">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <p class="hero-subtitle">بسم الله الرحمن الرحيم</p>
+                <p class="hero-pretitle">يسعدنا دعوتكم لحضور حفل زفاف</p>
+                <h1 class="hero-names">
+                    <span class="name-a">محمود</span>
+                    <span class="amp">&amp;</span>
+                    <span class="name-b">شيماء</span>
+                </h1>
+                <p class="hero-date">السبت | ١٢ أكتوبر ٢٠٢٦</p>
+            </div>
+            <div class="scroll-cue">↓</div>
+        </section>
+
+        <!-- COUNTDOWN -->
+        <section class="countdown-section">
+            <h2 class="section-title">الوقت المتبقي</h2>
+            <div class="countdown">
+                <div class="time-box"><span id="days">00</span><label>أيام</label></div>
+                <div class="time-box"><span id="hours">00</span><label>ساعات</label></div>
+                <div class="time-box"><span id="minutes">00</span><label>دقائق</label></div>
+                <div class="time-box"><span id="seconds">00</span><label>ثوانٍ</label></div>
+            </div>
+        </section>
+
+        <!-- QUOTE -->
+        <section class="quote-section">
+            <div class="ornament">❦</div>
+            <p class="quote">
+                "ومن آياته أن خلق لكم من أنفسكم أزواجاً لتسكنوا إليها وجعل بينكم مودة ورحمة"
+            </p>
+            <p class="quote-source">— سورة الروم —</p>
+        </section>
+
+        <!-- STORY -->
+        <section class="story-section">
+            <h2 class="section-title">قصتنا</h2>
+            <div class="story-grid">
+                <div class="story-card">
+                    <div class="story-icon">✦</div>
+                    <h3>البداية</h3>
+                    <p>تعارفنا في يوم عادي، لكن نظرة واحدة كانت كافية لتبدأ قصة العمر، ابتسامة كانت فاتحة حديث لم ينتهِ إلى اليوم.</p>
+                </div>
+                <div class="story-card">
+                    <div class="story-icon">♡</div>
+                    <h3>المسيرة</h3>
+                    <p>مشينا معاً في دروب الحياة، نتقاسم الأفراح والأحزان، نتعلم من كل تجربة، ونكبر معاً بقلوب مليئة بالحب.</p>
+                </div>
+                <div class="story-card">
+                    <div class="story-icon">∞</div>
+                    <h3>الوعد</h3>
+                    <p>اليوم نقف أمامكم لنعاهد بعضنا البعض على الحب والوفاء، ونرجو من الله أن يبارك مسيرتنا ويملأ حياتنا سعادة.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVENT DETAILS -->
+        <section class="event-section">
+            <h2 class="section-title">تفاصيل الحفل</h2>
+            <div class="event-cards">
+                <div class="event-card">
+                    <div class="event-icon">💍</div>
+                    <h3>الاحتفال</h3>
+                    <p class="event-date">السبت، ١٢ أكتوبر ٢٠٢٦</p>
+                    <p class="event-time">الساعة ٧:٠٠ مساءً</p>
+                    <p class="event-place">قاعة الاحتفالات الكبرى</p>
+                    <p class="event-address">شارع الزهور، الحي الراقي — المدينة</p>
+                    <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-outline">📍 افتح الخريطة</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-icon">🌙</div>
+                    <h3>حفل العشاء</h3>
+                    <p class="event-date">مباشرة بعد الحفل</p>
+                    <p class="event-time">الساعة ٩:٠٠ مساءً</p>
+                    <p class="event-place">مطعم المناسبات</p>
+                    <p class="event-address">الطابق الثاني — نفس المكان</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY -->
+        <section class="gallery-section">
+            <h2 class="section-title">لحظاتنا</h2>
+            <div class="gallery">
+                <div class="gallery-item g1"></div>
+                <div class="gallery-item g2"></div>
+                <div class="gallery-item g3"></div>
+                <div class="gallery-item g4"></div>
+                <div class="gallery-item g5"></div>
+                <div class="gallery-item g6"></div>
+            </div>
+        </section>
+
+        <!-- RSVP -->
+        <section class="rsvp-section">
+            <h2 class="section-title">تأكيد الحضور</h2>
+            <p class="rsvp-text">يسعدنا مشاركتكم فرحتنا، يرجى تأكيد الحضور قبل ١ أكتوبر ٢٠٢٦</p>
+            <form id="rsvpForm" class="rsvp-form">
+                <div class="form-row">
+                    <label>الاسم الكامل</label>
+                    <input type="text" name="name" required placeholder="اكتب اسمك هنا">
+                </div>
+                <div class="form-row">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" name="email" required placeholder="example@email.com">
+                </div>
+                <div class="form-row">
+                    <label>عدد الحاضرين</label>
+                    <select name="count" required>
+                        <option value="1">شخص واحد</option>
+                        <option value="2">شخصان</option>
+                        <option value="3" selected>٣ أشخاص</option>
+                        <option value="4">٤ أشخاص</option>
+                        <option value="5">٥ أشخاص</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label>هل ستحضر؟</label>
+                    <div class="radio-group">
+                        <label class="radio"><input type="radio" name="attending" value="yes" required> سأحضر بكل سرور</label>
+                        <label class="radio"><input type="radio" name="attending" value="no"> أعتذر عن الحضور</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label>رسالة للعروسين</label>
+                    <textarea name="message" rows="4" placeholder="اكتب كلمة حب أو تهنئة..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">إرسال التأكيد</button>
+                <p id="formStatus" class="form-status"></p>
+            </form>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="ornament">❦</div>
+            <p class="footer-names">محمود &amp; شيماء</p>
+            <p class="footer-date">١٢ . ١٠ . ٢٠٢٦</p>
+            <p class="footer-thanks">شكراً لوجودكم في حياتنا</p>
+            <p class="footer-credit">صُنع بـ ❤ لمشاركة الفرحة</p>
+        </footer>
+
+        <!-- MUSIC TOGGLE -->
+        <button id="musicToggle" class="music-toggle" aria-label="تشغيل الموسيقى">
+            <span class="music-icon">♪</span>
+        </button>
+        <audio id="bgMusic" loop preload="none">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
