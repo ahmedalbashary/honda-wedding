@@ -1,0 +1,219 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    overflow-x:hidden;
+
+    background:#faf7f3;
+
+    color:#333;
+
+}
+
+#cover{
+
+    position:fixed;
+
+    inset:0;
+
+    background:url("cover.jpg") center center/cover;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+}
+
+.cover-content{
+
+    position:relative;
+
+    z-index:5;
+
+    text-align:center;
+
+    color:white;
+
+    animation:fade 1.2s ease;
+
+}
+
+.invite{
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+
+    font-size:14px;
+
+}
+
+.cover-content h1{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:72px;
+
+    font-weight:500;
+
+}
+
+.cover-content span{
+
+    display:block;
+
+    font-size:38px;
+
+    margin:10px 0;
+
+}
+
+.date{
+
+    margin-top:20px;
+
+    font-size:18px;
+
+    opacity:.9;
+
+}
+
+#openBtn{
+
+    margin-top:45px;
+
+    padding:16px 42px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:white;
+
+    color:#222;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.35s;
+
+}
+
+#openBtn:hover{
+
+    transform:translateY(-3px);
+
+    background:#d8c4a7;
+
+}
+
+#website{
+
+    display:none;
+
+}
+
+.hero{
+
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.hero h2{
+
+    font-size:60px;
+
+    font-family:'Cormorant Garamond';
+
+}
+
+.hero p{
+
+    margin-top:15px;
+
+}
+
+.hide{
+
+    animation:hideCover 1.2s forwards;
+
+}
+
+@keyframes hideCover{
+
+    to{
+
+        opacity:0;
+
+        visibility:hidden;
+
+    }
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+.cover-content h1{
+
+font-size:48px;
+
+}
+
+}
