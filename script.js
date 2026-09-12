@@ -8,28 +8,66 @@
     const WEDDING_DATE = new Date('2026-10-12T19:00:00').getTime();
     // Adjust to your local timezone if needed.
 
+/* ---------- Card Open ---------- */
+
+const envelope = document.getElementById('envelope');
+const invitation = document.getElementById('invitation');
+
 function openEnvelope() {
 
-    if (!envelope || envelope.classList.contains('opened')) {
-        return;
-    }
+    if (!envelope) return;
 
-    // Start the card opening animation
+    // Prevent clicking twice
+    if (envelope.classList.contains('opened')) return;
+
+    // Open the physical card
     envelope.classList.add('opened');
 
-    // Allow the page to scroll after opening
+    // Allow page scrolling
     document.body.classList.remove('no-scroll');
 
-    // Start music after the user's click
+    // Start music
     startMusic();
 
-    // Reveal the actual invitation after the card animation
+    // Wait for the card opening animation
     setTimeout(() => {
 
+        // Hide opening card
         envelope.classList.add('hidden');
 
-        invitation.classList.remove('hidden');
+        // Show the actual invitation
+        if (invitation) {
+            invitation.classList.remove('hidden');
+        }
 
+        // Start reveal animations
+        observeFadeIns();
+
+        // Start at the top of the invitation
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant'
+        });
+
+    }, 1600);
+}
+
+
+/* Click anywhere on the card */
+
+if (envelope) {
+
+    envelope.addEventListener('click', openEnvelope);
+
+    envelope.addEventListener(
+        'touchend',
+        openEnvelope,
+        { passive: true }
+    );
+
+    document.body.classList.add('no-scroll');
+}
         window.scrollTo({
             top: 0,
             behavior: 'instant'
