@@ -68,15 +68,6 @@ if (envelope) {
 
     document.body.classList.add('no-scroll');
 }
-        window.scrollTo({
-            top: 0,
-            behavior: 'instant'
-        });
-
-        observeFadeIns();
-
-    }, 1900);
-}
     /* ---------- Countdown ---------- */
     const dEl = document.getElementById('days');
     const hEl = document.getElementById('hours');
