@@ -47,88 +47,733 @@ body.no-scroll {
 }
 
 /* ============================================
-   ENVELOPE COVER
+   WEDDING CARD COVER
    ============================================ */
+
 .envelope {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background:
-        radial-gradient(ellipse at center, #fbf6ee 0%, #ede4d3 100%);
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffdf9 0%,
+            #f5efe6 45%,
+            #e7dccb 100%
+        );
+
     cursor: pointer;
-    transition: opacity 0.8s ease, transform 0.8s ease;
+
+    overflow: hidden;
+
+    perspective: 1800px;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
 }
 
 .envelope::before {
     content: '';
+
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(135deg, transparent 48%, rgba(184,134,45,0.04) 49%, rgba(184,134,45,0.04) 51%, transparent 52%),
-        linear-gradient(45deg, transparent 48%, rgba(184,134,45,0.04) 49%, rgba(184,134,45,0.04) 51%, transparent 52%);
-    background-size: 80px 80px;
-    opacity: 0.5;
-}
 
-.envelope.opened {
-    opacity: 0;
-    transform: scale(1.1);
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(184,134,45,.18) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    opacity: .25;
+
     pointer-events: none;
 }
 
-.envelope-inner {
-    text-align: center;
+
+/* ============================================
+   CARD SCENE
+   ============================================ */
+
+.card-scene {
+
     position: relative;
-    z-index: 2;
-    animation: floatGentle 4s ease-in-out infinite;
+
+    width: min(420px, 86vw);
+    height: min(590px, 78vh);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    perspective: 1800px;
 }
 
-@keyframes floatGentle {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
 
-.seal {
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 30px;
-    filter: drop-shadow(0 10px 30px rgba(184,134,45,0.4));
-    transition: transform 0.3s ease;
-}
+/* ============================================
+   CARD
+   ============================================ */
 
-.envelope:hover .seal {
-    transform: scale(1.05) rotate(-2deg);
-}
+.wedding-card {
 
-.seal svg {
+    position: relative;
+
     width: 100%;
     height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 1.6s cubic-bezier(.65,.05,.25,1);
+
+    filter:
+        drop-shadow(
+            0 25px 45px
+            rgba(58,42,26,.22)
+        );
+
+    transform-origin: center center;
 }
 
-.couple-preview {
-    font-family: 'Aref Ruqaa', serif;
+
+/* ============================================
+   FRONT COVER
+   ============================================ */
+
+.card-front {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 45px 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf9 0%,
+            #f8f0e5 50%,
+            #eee2d0 100%
+        );
+
+    border: 1px solid rgba(184,134,45,.55);
+
+    transform-origin: left center;
+
+    backface-visibility: hidden;
+
+    transition:
+        transform 1.5s cubic-bezier(.65,.05,.25,1),
+        box-shadow 1.5s ease;
+}
+
+
+/* Inner gold border */
+
+.card-border {
+
+    position: absolute;
+
+    inset: 14px;
+
+    border: 1px solid rgba(184,134,45,.6);
+
+    pointer-events: none;
+}
+
+.card-border::before {
+
+    content: '';
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid rgba(184,134,45,.2);
+}
+
+
+/* ============================================
+   DECORATION
+   ============================================ */
+
+.card-decoration {
+
+    color: var(--gold);
+
     font-size: 2.2rem;
-    color: var(--gold-dark);
-    margin-bottom: 30px;
-    letter-spacing: 1px;
+
+    line-height: 1;
 }
 
-.tap-text {
-    font-family: 'Amiri', serif;
-    font-size: 1rem;
+.card-decoration.top {
+
+    margin-bottom: 25px;
+
+    animation:
+        gentleFloat 4s ease-in-out infinite;
+}
+
+
+/* ============================================
+   TEXT
+   ============================================ */
+
+.card-small-text {
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: .95rem;
+
     color: var(--ink-soft);
-    letter-spacing: 2px;
-    animation: pulse 2s ease-in-out infinite;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 22px;
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
+
+.card-names {
+
+    font-family: 'Aref Ruqaa', serif;
+
+    font-size: clamp(3rem, 9vw, 4.5rem);
+
+    line-height: 1.05;
+
+    font-weight: 400;
+
+    color: var(--ink);
+
+    margin: 0;
 }
 
+.card-names span {
+
+    display: block;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 2.3rem;
+
+    color: var(--gold);
+
+    margin: 8px 0;
+}
+
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.card-divider {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    width: 75%;
+
+    margin: 25px 0;
+}
+
+.card-divider span {
+
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold-light)
+        );
+}
+
+.card-divider span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-light),
+            transparent
+        );
+}
+
+.card-divider b {
+
+    color: var(--gold);
+
+    font-size: 1.1rem;
+
+    font-weight: normal;
+}
+
+
+/* ============================================
+   INVITATION TEXT
+   ============================================ */
+
+.card-invitation {
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.05rem;
+
+    line-height: 1.5;
+
+    color: var(--ink-soft);
+
+    margin-bottom: 22px;
+}
+
+
+/* ============================================
+   DATE
+   ============================================ */
+
+.card-date {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.15rem;
+
+    color: var(--gold-dark);
+
+    letter-spacing: 3px;
+}
+
+.card-date i {
+
+    font-style: normal;
+
+    color: var(--gold-light);
+
+    font-size: .7rem;
+}
+
+
+/* ============================================
+   SEAL
+   ============================================ */
+
+.card-seal {
+
+    position: absolute;
+
+    bottom: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--gold);
+
+    background:
+        radial-gradient(
+            circle,
+            #f8ead0,
+            #d4a84a
+        );
+
+    color: #fffdf9;
+
+    box-shadow:
+        0 4px 12px rgba(184,134,45,.25);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1rem;
+}
+
+.card-seal small {
+
+    font-size: .7rem;
+
+    opacity: .8;
+}
+
+
+/* ============================================
+   TAP TEXT
+   ============================================ */
+
+.card-tap {
+
+    position: absolute;
+
+    bottom: 22px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: .72rem;
+
+    letter-spacing: 3px;
+
+    color: var(--muted);
+
+    animation:
+        tapPulse 2.2s ease-in-out infinite;
+}
+
+
+/* ============================================
+   INSIDE OF CARD
+   ============================================ */
+
+.card-inside {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #faf4ea;
+
+    border: 1px solid rgba(184,134,45,.35);
+
+    overflow: hidden;
+}
+
+.card-inside-left {
+
+    transform: translateZ(-1px);
+
+}
+
+.card-inside-right {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf9,
+            #f3e8d8
+        );
+}
+
+
+/* ============================================
+   INSIDE PATTERN
+   ============================================ */
+
+.inside-pattern {
+
+    position: absolute;
+
+    inset: 20px;
+
+    border: 1px solid rgba(184,134,45,.25);
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(184,134,45,.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(184,134,45,.08),
+            transparent 30%
+        );
+}
+
+
+/* ============================================
+   INSIDE CONTENT
+   ============================================ */
+
+.inside-content {
+
+    text-align: center;
+
+    color: var(--ink);
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity .8s ease .9s,
+        transform .8s ease .9s;
+}
+
+.inside-ornament {
+
+    display: block;
+
+    color: var(--gold);
+
+    font-size: 2rem;
+
+    margin-bottom: 20px;
+}
+
+.inside-content > p {
+
+    font-family: 'Cormorant Garamond', serif;
+
+    color: var(--ink-soft);
+
+    font-size: 1rem;
+
+    margin-bottom: 15px;
+}
+
+.inside-content h2 {
+
+    font-family: 'Aref Ruqaa', serif;
+
+    font-size: 3.4rem;
+
+    font-weight: 400;
+
+    line-height: 1.1;
+}
+
+.inside-content h2 span {
+
+    font-family: 'Cormorant Garamond', serif;
+
+    color: var(--gold);
+
+    font-size: 2rem;
+}
+
+.inside-date {
+
+    margin-top: 25px;
+
+    color: var(--gold-dark) !important;
+
+    letter-spacing: 4px;
+}
+
+
+/* ============================================
+   OPEN HINT
+   ============================================ */
+
+.open-hint {
+
+    position: absolute;
+
+    bottom: -70px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 4px;
+
+    color: var(--ink-soft);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: .9rem;
+
+    white-space: nowrap;
+
+    animation:
+        hintFloat 2.5s ease-in-out infinite;
+}
+
+.open-hint b {
+
+    color: var(--gold);
+
+    font-size: 1.2rem;
+
+    font-weight: normal;
+}
+
+
+/* ============================================
+   OPENED STATE
+   ============================================ */
+
+.envelope.opened .wedding-card {
+
+    transform:
+        rotateY(-8deg)
+        scale(1.03);
+}
+
+.envelope.opened .card-front {
+
+    transform:
+        rotateY(-175deg);
+
+    box-shadow:
+        -15px 20px 35px
+        rgba(58,42,26,.12);
+}
+
+.envelope.opened .inside-content {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* ============================================
+   COVER DISAPPEARS
+   ============================================ */
+
+.envelope.opened {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition-delay: 1.8s;
+}
+
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes gentleFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes tapPulse {
+
+    0%,100% {
+        opacity: .45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes hintFloat {
+
+    0%,100% {
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            translateY(-5px);
+    }
+}
+
+
+/* ============================================
+   MOBILE
+   ============================================ */
+
+@media (max-width: 600px) {
+
+    .card-scene {
+
+        width: 82vw;
+
+        height: 68vh;
+
+        max-height: 570px;
+    }
+
+    .card-front {
+
+        padding: 35px 20px;
+    }
+
+    .card-small-text {
+
+        font-size: .8rem;
+    }
+
+    .card-names {
+
+        font-size: 3.2rem;
+    }
+
+    .card-names span {
+
+        font-size: 1.8rem;
+    }
+
+    .card-invitation {
+
+        font-size: .9rem;
+    }
+
+    .card-seal {
+
+        bottom: 58px;
+    }
+
+    .open-hint {
+
+        bottom: -55px;
+
+        font-size: .8rem;
+    }
+}
 /* ============================================
    MAIN INVITATION
    ============================================ */
