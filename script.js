@@ -8,29 +8,37 @@
     const WEDDING_DATE = new Date('2026-10-12T19:00:00').getTime();
     // Adjust to your local timezone if needed.
 
-    /* ---------- Envelope Open ---------- */
-    const envelope = document.getElementById('envelope');
-    const invitation = document.getElementById('invitation');
+function openEnvelope() {
 
-    function openEnvelope() {
-        if (!envelope || envelope.classList.contains('opened')) return;
-        envelope.classList.add('opened');
-        document.body.classList.remove('no-scroll');
-        setTimeout(() => {
-            envelope.classList.add('hidden');
-            invitation.classList.remove('hidden');
-            startMusic();
-            observeFadeIns();
-            window.scrollTo({ top: 0, behavior: 'instant' });
-        }, 800);
+    if (!envelope || envelope.classList.contains('opened')) {
+        return;
     }
 
-    if (envelope) {
-        envelope.addEventListener('click', openEnvelope);
-        envelope.addEventListener('touchstart', openEnvelope, { passive: true });
-        document.body.classList.add('no-scroll');
-    }
+    // Start the card opening animation
+    envelope.classList.add('opened');
 
+    // Allow the page to scroll after opening
+    document.body.classList.remove('no-scroll');
+
+    // Start music after the user's click
+    startMusic();
+
+    // Reveal the actual invitation after the card animation
+    setTimeout(() => {
+
+        envelope.classList.add('hidden');
+
+        invitation.classList.remove('hidden');
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'instant'
+        });
+
+        observeFadeIns();
+
+    }, 1900);
+}
     /* ---------- Countdown ---------- */
     const dEl = document.getElementById('days');
     const hEl = document.getElementById('hours');
