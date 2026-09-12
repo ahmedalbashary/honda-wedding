@@ -1528,11 +1528,21 @@ section {
    ============================================ */
 
 .card-tap {
-    color: var(--gold-dark) !important;
+    color: #8a6419 !important;
     opacity: 1 !important;
-    z-index: 20;
-}
+    z-index: 50;
 
+    font-size: 0.68rem !important;
+    font-weight: 500;
+
+    letter-spacing: 2.5px;
+
+    text-shadow: 0 1px 2px rgba(255,255,255,.8);
+
+    animation: none !important;
+
+    pointer-events: none;
+}
 .open-hint {
     color: var(--gold-dark) !important;
     opacity: 1 !important;
