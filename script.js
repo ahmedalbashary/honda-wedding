@@ -29,28 +29,20 @@ function openEnvelope() {
     // Start music
     startMusic();
 
-    // Wait for the card opening animation
-    setTimeout(() => {
+   // Go directly to the main invitation
+envelope.classList.add('hidden');
 
-        // Hide opening card
-        envelope.classList.add('hidden');
+if (invitation) {
+    invitation.classList.remove('hidden');
+}
 
-        // Show the actual invitation
-        if (invitation) {
-            invitation.classList.remove('hidden');
-        }
+observeFadeIns();
 
-        // Start reveal animations
-        observeFadeIns();
-
-        // Start at the top of the invitation
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'instant'
-        });
-
-    }, 1600);
+window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'instant'
+});
 }
 
 
