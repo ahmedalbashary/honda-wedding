@@ -756,7 +756,159 @@ body.no-scroll {
 
         font-size: 1.8rem;
     }
+/* ============================================
+   CARD SPACING FIX
+   ============================================ */
 
+.card-front {
+    padding: 30px 28px 95px;
+}
+
+/* Give the main content a little more breathing room */
+.card-decoration.top {
+    margin-bottom: 18px;
+}
+
+.card-small-text {
+    margin-bottom: 16px;
+}
+
+.card-names {
+    line-height: 0.95;
+}
+
+.card-names span {
+    margin: 5px 0;
+}
+
+.card-divider {
+    margin: 18px 0;
+}
+
+.card-invitation {
+    margin-bottom: 16px;
+}
+
+/* Move the date clearly ABOVE the seal */
+.card-date {
+    position: absolute;
+    bottom: 105px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+/* Put the seal below the date */
+.card-seal {
+    bottom: 48px;
+}
+
+/* Put TAP TO OPEN underneath the seal */
+.card-tap {
+    bottom: 13px;
+}
+
+/* Move the hint farther away from the card */
+.open-hint {
+    bottom: -82px;
+}
+
+
+/* ============================================
+   MOBILE CARD FIX
+   ============================================ */
+
+@media (max-width: 600px) {
+
+    .card-front {
+        padding: 28px 22px 90px;
+    }
+
+    .card-decoration.top {
+        margin-bottom: 14px;
+        font-size: 1.9rem;
+    }
+
+    .card-small-text {
+        font-size: .78rem;
+        margin-bottom: 13px;
+    }
+
+    .card-names {
+        font-size: 3rem;
+        line-height: .92;
+    }
+
+    .card-names span {
+        font-size: 1.7rem;
+        margin: 4px 0;
+    }
+
+    .card-divider {
+        margin: 15px 0;
+    }
+
+    .card-invitation {
+        font-size: .82rem;
+        line-height: 1.35;
+        margin-bottom: 0;
+    }
+
+    .card-date {
+        bottom: 91px;
+        font-size: .95rem;
+        gap: 9px;
+        letter-spacing: 2px;
+    }
+
+    .card-seal {
+        width: 50px;
+        height: 50px;
+        bottom: 40px;
+    }
+
+    .card-tap {
+        bottom: 11px;
+        font-size: .62rem;
+        letter-spacing: 2px;
+    }
+
+    .open-hint {
+        bottom: -55px;
+        font-size: .72rem;
+    }
+}
+
+
+/* ============================================
+   VERY SMALL SCREENS
+   ============================================ */
+
+@media (max-width: 380px) {
+
+    .card-names {
+        font-size: 2.65rem;
+    }
+
+    .card-invitation {
+        font-size: .76rem;
+    }
+
+    .card-date {
+        bottom: 87px;
+        font-size: .88rem;
+    }
+
+    .card-seal {
+        width: 46px;
+        height: 46px;
+        bottom: 37px;
+    }
+
+    .card-tap {
+        font-size: .58rem;
+    }
+}
     .card-invitation {
 
         font-size: .9rem;
