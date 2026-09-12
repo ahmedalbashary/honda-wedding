@@ -1522,3 +1522,36 @@ section {
     .hero-date { font-size: 1rem; }
     .section-title { font-size: 1.6rem; }
 }
+
+/* ============================================
+   FINAL MOBILE CARD FIX
+   ============================================ */
+
+.card-tap {
+    color: var(--gold-dark) !important;
+    opacity: 1 !important;
+    z-index: 20;
+}
+
+.open-hint {
+    color: var(--gold-dark) !important;
+    opacity: 1 !important;
+    z-index: 20;
+}
+
+.open-hint b {
+    color: var(--gold) !important;
+}
+
+
+/* Make the whole card obviously clickable */
+.envelope,
+.card-scene,
+.wedding-card,
+.card-front {
+    cursor: pointer;
+}
+
+.card-front {
+    pointer-events: auto;
+}
