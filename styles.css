@@ -885,11 +885,13 @@ body.no-scroll {
         height: 44px;
     }
 
-    .card-tap {
-        bottom: 11px;
-        font-size: .54rem;
-    }
-
+.card-tap {
+    bottom: 15px !important;
+    font-size: .68rem !important;
+    color: #8a6419 !important;
+    opacity: 1 !important;
+    animation: none !important;
+}
     .open-hint {
         bottom: -52px;
         font-size: .66rem;
