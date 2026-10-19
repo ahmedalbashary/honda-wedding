@@ -251,12 +251,14 @@
         st.textContent = thanks;
         f.reset();
         beep(784, .2);
+        showCalendarOption(yes);
       } catch (netErr) {
         console.error('Submission failed:', netErr);
         // Fallback message
         st.textContent = thanks;
         f.reset();
         beep(784, .2);
+        showCalendarOption(yes);
       } finally {
         submitBtn.disabled = false;
       }
@@ -267,7 +269,113 @@
       st.textContent = thanks;
       f.reset();
       beep(784, .2);
+      showCalendarOption(yes);
     }
   });
+
+  /* ===== Add to Calendar (Smart iOS / Android Mobile Support) ===== */
+  const CAL_EVENT = {
+    title: 'Mohamed & Salma | Wedding Celebration 💍',
+    description: "Two players. One quest. Infinite lives together.\n\n💍 Mohamed & Salma's Wedding Celebration\n📍 Location: Tree House Orabi\n🗺️ Map: https://maps.app.goo.gl/gmbt4o8Fr2iAh7eN6\n⏰ Time: 4:00 PM (Bonus points for arriving on time!)",
+    location: 'Tree House Orabi',
+    startUtc: '20261205T140000Z', // 4:00 PM Cairo (UTC+2) = 14:00 UTC
+    endUtc: '20261205T200000Z'    // 10:00 PM Cairo (UTC+2) = 20:00 UTC
+  };
+
+  function getGoogleCalendarUrl() {
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: CAL_EVENT.title,
+      dates: `${CAL_EVENT.startUtc}/${CAL_EVENT.endUtc}`,
+      details: CAL_EVENT.description,
+      location: CAL_EVENT.location
+    });
+    return 'https://calendar.google.com/calendar/render?' + params.toString();
+  }
+
+  function downloadIcsFile() {
+    const icsData = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Mohamed & Salma//Wedding Invitation//EN',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VEVENT',
+      'UID:wedding-mohamed-salma-20261205@weddingcoop',
+      'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
+      'DTSTART:' + CAL_EVENT.startUtc,
+      'DTEND:' + CAL_EVENT.endUtc,
+      'SUMMARY:' + CAL_EVENT.title,
+      'DESCRIPTION:' + CAL_EVENT.description.replace(/\n/g, '\\n'),
+      'LOCATION:' + CAL_EVENT.location,
+      'STATUS:CONFIRMED',
+      'BEGIN:VALARM',
+      'TRIGGER:-PT24H',
+      'ACTION:DISPLAY',
+      'DESCRIPTION:Reminder: Mohamed & Salma Wedding Tomorrow!',
+      'END:VALARM',
+      'BEGIN:VALARM',
+      'TRIGGER:-PT2H',
+      'ACTION:DISPLAY',
+      'DESCRIPTION:Reminder: Mohamed & Salma Wedding in 2 Hours!',
+      'END:VALARM',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Mohamed-Salma-Wedding.ics';
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(() => {
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }, 1500);
+  }
+
+  function isAppleDevice() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  }
+
+  function handleSmartCalendar() {
+    if (isAppleDevice()) {
+      // iOS / iPadOS natively opens the Apple Calendar event sheet from .ics
+      downloadIcsFile();
+    } else {
+      // Android / Desktop opens Google Calendar directly
+      window.open(getGoogleCalendarUrl(), '_blank');
+    }
+  }
+
+  function showCalendarOption(attending) {
+    const calBlock = $('calendarBlock');
+    if (!calBlock) return;
+    calBlock.hidden = false;
+    setTimeout(() => {
+      calBlock.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 200);
+  }
+
+  const calBtn = $('addToCalBtn');
+  if (calBtn) {
+    calBtn.addEventListener('click', handleSmartCalendar);
+  }
+
+  const gLink = $('googleCalLink');
+  if (gLink) {
+    gLink.href = getGoogleCalendarUrl();
+  }
+
+  const aLink = $('appleCalLink');
+  if (aLink) {
+    aLink.addEventListener('click', e => {
+      e.preventDefault();
+      downloadIcsFile();
+    });
+  }
 
 })();
