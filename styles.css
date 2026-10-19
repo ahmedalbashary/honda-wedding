@@ -108,6 +108,18 @@ input,select,textarea{font:inherit;padding:.4rem .7rem;border:3px solid var(--br
 #toast.show{transform:translate(-50%,0)}
 .cf{position:fixed;top:-20px;width:10px;height:14px;z-index:70;animation:fall 2.6s linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
-@media(max-width:480px){.pl span{display:none}.pad{width:96px;height:96px}}
+
+/* Add to Calendar Block */
+.calendar-block{margin-top:1.2rem;padding:1.2rem;background:#FFFDF7;border:3px dashed var(--brown);border-radius:18px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.6rem;animation:pop .4s ease}
+.calendar-block h4{font-family:'Lalezar',sans-serif;font-size:1.45rem;color:var(--maroon);font-weight:400;margin:0;line-height:1.2}
+.calendar-block p{margin:0;font-size:.95rem;color:var(--brown)}
+.cal-btn{background:var(--gold);color:var(--maroon);border:3px solid var(--brown);border-radius:14px;padding:.5rem 1.6rem;font-size:1.15rem;font-weight:800;box-shadow:0 4px 0 var(--brown);cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;transition:transform .1s,box-shadow .1s}
+.cal-btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--brown)}
+.cal-links{display:flex;gap:.8rem;align-items:center;font-size:.85rem;font-weight:700;margin-top:.2rem}
+.cal-links a{color:var(--denim);text-decoration:underline;cursor:pointer}
+.cal-links a:hover{color:var(--red)}
+
+@media(max-width:480px){.pl span{display:none}.pad{width:96px;height:96px}.cal-btn{font-size:1rem;padding:.4rem 1.2rem}.cal-links{flex-direction:column;gap:.3rem}}
 @media(hover:none){.desk{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.cf{display:none}}
+
