@@ -11,7 +11,7 @@
   // 📊 Google Sheets RSVP Export Configuration:
   // Target Sheet: https://docs.google.com/spreadsheets/d/1Udd9Bj1yKndK8-7nke1rCDV5dhcqGEhgDpyINjDHQl4/edit?usp=sharing
   // Follow the instructions in GOOGLE_SHEET_SETUP.md and paste your Web App URL here:
-  const GOOGLE_APPS_SCRIPT_URL = '';
+  const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzCQur3nllN6GdhYwjFYOZGBlGO7JqEOIS3hPpHat42TyZzJ2J38F3Qw-sEJD2bOUZ6w/exec';
 
   const STORY = [
     ['✦', 'The Beginning',  'We met on an ordinary day — but one look was enough to start the greatest adventure of our lives. A smile that opened a conversation that never ended.'],
