@@ -112,6 +112,20 @@
         </label>
         <button type="submit" class="btn">SEND RSVP</button>
         <p id="formStatus" class="form-status" role="status"></p>
+
+        <!-- Add to Calendar Box (appears after RSVP submission) -->
+        <div id="calendarBlock" class="calendar-block" hidden>
+          <h4>🗓️ Save the Date</h4>
+          <p>Saturday, December 5, 2026 at 4:00 PM</p>
+          <button type="button" id="addToCalBtn" class="cal-btn" title="Add event to your mobile or desktop calendar">
+            📅 Add to Calendar
+          </button>
+          <div class="cal-links">
+            <a id="googleCalLink" href="#" target="_blank" rel="noopener">Google Calendar (Android)</a>
+            <span>•</span>
+            <a id="appleCalLink" href="#" role="button">Apple Calendar (iOS / .ics)</a>
+          </div>
+        </div>
       </form>
       <div class="doors" aria-hidden="true"><i></i><i></i><span class="lock">🔒</span></div>
     </div>
